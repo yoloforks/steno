@@ -1,5 +1,5 @@
 {
-  "extends": "@sindresorhus/tsconfig",
+  "extends": "@crashmax/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
     "sourceMap": false
