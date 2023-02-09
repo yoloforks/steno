@@ -28,9 +28,13 @@
   "author": "Typicode <typicode@gmail.com>",
   "type": "module",
   "source": "./src/index.ts",
+  "main": "./dist/steno.cjs",
   "exports": {
-    "require": "./dist/steno.cjs",
-    "import": "./dist/steno.esm.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/steno.cjs",
+      "import": "./dist/steno.esm.js"
+    }
   },
   "types": "./dist/index.d.ts",
   "files": [
@@ -46,7 +50,8 @@
     "benchmark": "npm run build && node dist/benchmark.esm.js"
   },
   "devDependencies": {
-    "xv": "^1.1.1"
+    "@types/node": "18.13.0",
+    "xv": "1.1.1"
   },
   "engines": {
     "node": ">=14.16"

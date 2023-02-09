@@ -2,7 +2,6 @@ import { strictEqual as equal } from 'assert'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
-
 import { Writer } from './index.js'
 
 export async function testSteno(): Promise<void> {

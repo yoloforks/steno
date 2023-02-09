@@ -2,7 +2,6 @@ import { readFileSync } from 'fs'
 import { mkdtemp, writeFile } from 'fs/promises'
 import os from 'os'
 import path from 'path'
-
 import { Writer } from './index.js'
 
 async function benchmark(data: string, msg: string): Promise<void> {
@@ -28,7 +27,7 @@ async function benchmark(data: string, msg: string): Promise<void> {
   console.time(stenoLabel)
   // Steno can be run in parallel
   await Promise.all(
-    [...Array(1000).keys()].map((_, i) => steno.write(`${data}${i}`)),
+    [...Array(1000).keys()].map((_, i) => steno.write(`${data}${i}`))
   )
   console.timeEnd(stenoLabel)
 
@@ -38,7 +37,7 @@ async function benchmark(data: string, msg: string): Promise<void> {
     '  fs.txt = steno.txt',
     readFileSync(fsFile, 'utf-8') === readFileSync(stenoFile, 'utf-8')
       ? '✓'
-      : '✗',
+      : '✗'
   )
   console.log()
   console.log()
@@ -49,11 +48,11 @@ async function run(): Promise<void> {
   const MB = 1048576
   await benchmark(
     Buffer.alloc(KB, 'x').toString(),
-    'Write 1KB data to the same file x 1000',
+    'Write 1KB data to the same file x 1000'
   )
   await benchmark(
     Buffer.alloc(MB, 'x').toString(),
-    'Write 1MB data to the same file x 1000',
+    'Write 1MB data to the same file x 1000'
   )
 }
 

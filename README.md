@@ -18,7 +18,7 @@ _https://en.wikipedia.org/wiki/Stenotype_
 ## Usage
 
 ```javascript
-import { Writer } from 'steno'
+import { Writer } from '@stenodb/writer'
 
 // Create a singleton writer
 const file = new Writer('file.txt')
