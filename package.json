@@ -27,20 +27,25 @@
   "license": "MIT",
   "author": "Typicode <typicode@gmail.com>",
   "type": "module",
-  "exports": "./lib/index.js",
-  "types": "lib/index.d.ts",
+  "source": "./src/index.ts",
+  "exports": {
+    "require": "./dist/steno.cjs",
+    "import": "./dist/steno.esm.js"
+  },
+  "types": "./dist/index.d.ts",
   "files": [
-    "lib/index.js",
-    "lib/index.d.ts"
+    "dist/steno.cjs",
+    "dist/steno.esm.js",
+    "dist/index.d.ts"
   ],
   "scripts": {
-    "test": "npm run build && xv lib",
-    "build": "del-cli lib && tsc",
+    "test": "npm run build && xv dist",
+    "build": "del-cli dist && microbundle -i src/index.ts -i src/benchmark.ts --format esm,cjs --target node",
     "lint": "eslint src --ext .ts --ignore-path .gitignore",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "postversion": "git push && git push --tags && npm publish",
-    "benchmark": "npm run build && node lib/benchmark.js",
+    "benchmark": "npm run build && node dist/benchmark.esm.js",
     "commit": "commit"
   },
   "devDependencies": {
@@ -52,6 +57,7 @@
     "@typicode/eslint-config": "^1.1.0",
     "del-cli": "^5.0.0",
     "husky": "^8.0.1",
+    "microbundle": "^0.15.1",
     "typescript": "^4.8.4",
     "xv": "^1.1.1"
   },
