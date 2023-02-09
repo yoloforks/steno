@@ -1,5 +1,5 @@
 {
-  "name": "steno",
+  "name": "@stenodb/writer",
   "version": "3.0.0",
   "description": "Specialized fast async file writer",
   "keywords": [
