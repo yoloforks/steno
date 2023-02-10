@@ -38,9 +38,8 @@
   },
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/steno.cjs",
-    "dist/steno.esm.js",
-    "dist/index.d.ts"
+    "dist",
+    "src"
   ],
   "scripts": {
     "dev": "microbundle watch",
