@@ -30,11 +30,9 @@
   "source": "./src/index.ts",
   "main": "./dist/steno.cjs",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/steno.cjs",
-      "import": "./dist/steno.esm.js"
-    }
+    "types": "./dist/index.d.ts",
+    "require": "./dist/steno.cjs",
+    "default": "./dist/steno.esm.js"
   },
   "types": "./dist/index.d.ts",
   "files": [
