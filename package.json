@@ -26,28 +26,27 @@
   "funding": "https://github.com/sponsors/typicode",
   "license": "MIT",
   "author": "Typicode <typicode@gmail.com>",
-  "type": "module",
-  "source": "./src/index.ts",
-  "main": "./dist/steno.cjs",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "require": "./dist/steno.cjs",
-    "default": "./dist/steno.esm.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.mjs"
+    }
   },
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "dev": "microbundle watch",
-    "build": "del-cli dist && microbundle -i src/index.ts -i src/benchmark.ts --format esm,cjs --target node",
-    "test": "npm run build && xv dist",
-    "benchmark": "npm run build && node dist/benchmark.esm.js"
+    "dev": "pnpm build -- --watch src",
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
-    "xv": "1.1.1"
+    "tsup": "6.6.3"
   },
   "engines": {
     "node": ">=14.16"
