@@ -1,12 +1,14 @@
-import { strictEqual as equal } from 'assert'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
+import { test } from 'uvu'
+import * as assert from 'uvu/assert'
 import { Writer } from './index.js'
 
-export async function testSteno(): Promise<void> {
+test('@stenodb/writer', async () => {
   const max = 1000
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'steno-test-'))
+  console.log(dir)
   const file = path.join(dir, 'tmp.txt')
 
   const writer = new Writer(file)
@@ -19,5 +21,7 @@ export async function testSteno(): Promise<void> {
 
   // All promises should resolve
   await Promise.all(promises)
-  equal(parseInt(fs.readFileSync(file, 'utf-8')), max)
-}
+  assert.equal(parseInt(fs.readFileSync(file, 'utf-8')), max)
+})
+
+test.run()

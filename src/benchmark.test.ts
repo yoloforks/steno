@@ -2,7 +2,25 @@ import { readFileSync } from 'fs'
 import { mkdtemp, writeFile } from 'fs/promises'
 import os from 'os'
 import path from 'path'
+import { test } from 'uvu'
 import { Writer } from './index.js'
+
+test('@stenodb/writer benchmark', async () => {
+  const KB = 1024
+  const MB = 1048576
+
+  await benchmark(
+    Buffer.alloc(KB, 'x').toString(),
+    'Write 1KB data to the same file x 1000'
+  )
+
+  await benchmark(
+    Buffer.alloc(MB, 'x').toString(),
+    'Write 1MB data to the same file x 1000'
+  )
+})
+
+test.run()
 
 async function benchmark(data: string, msg: string): Promise<void> {
   const dir = await mkdtemp(path.join(os.tmpdir(), 'steno-'))
@@ -42,18 +60,3 @@ async function benchmark(data: string, msg: string): Promise<void> {
   console.log()
   console.log()
 }
-
-async function run(): Promise<void> {
-  const KB = 1024
-  const MB = 1048576
-  await benchmark(
-    Buffer.alloc(KB, 'x').toString(),
-    'Write 1KB data to the same file x 1000'
-  )
-  await benchmark(
-    Buffer.alloc(MB, 'x').toString(),
-    'Write 1MB data to the same file x 1000'
-  )
-}
-
-void run()
