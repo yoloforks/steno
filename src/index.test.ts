@@ -8,7 +8,6 @@ import { Writer } from './index.js'
 test('@stenodb/writer', async () => {
   const max = 1000
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'steno-test-'))
-  console.log(dir)
   const file = path.join(dir, 'tmp.txt')
 
   const writer = new Writer(file)
