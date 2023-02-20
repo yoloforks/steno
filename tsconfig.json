@@ -1,7 +1,7 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
-    "outDir": "dist",
-    "sourceMap": false
+    "target": "ESNext",
+    "outDir": "dist"
   }
 }
