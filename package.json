@@ -43,15 +43,24 @@
   "scripts": {
     "dev": "pnpm build --watch src",
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "test": "tsx src/index.test.ts",
-    "test:watch": "tsx watch src/index.test.ts",
-    "benchmark": "tsx src/benchmark.test.ts"
+    "test": "ava",
+    "test:watch": "ava --watch"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
+    "ava": "^5.2.0",
     "tsup": "6.6.3",
-    "tsx": "3.12.3",
-    "uvu": "0.5.6"
+    "tsx": "3.12.3"
+  },
+  "ava": {
+    "snapshotDir": "test/snapshots",
+    "extensions": [
+      "ts"
+    ],
+    "nodeArguments": [
+      "--loader=tsx",
+      "--no-warnings"
+    ]
   },
   "engines": {
     "node": ">=14.16"

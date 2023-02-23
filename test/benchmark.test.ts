@@ -1,11 +1,11 @@
+import test from 'ava'
 import { readFileSync } from 'fs'
 import { mkdtemp, writeFile } from 'fs/promises'
 import os from 'os'
 import path from 'path'
-import { test } from 'uvu'
-import { Writer } from './index.js'
+import { Writer } from '../src/index.js'
 
-test('@stenodb/writer benchmark', async () => {
+test('@stenodb/writer benchmark', async (t) => {
   const KB = 1024
   const MB = 1048576
 
@@ -18,9 +18,9 @@ test('@stenodb/writer benchmark', async () => {
     Buffer.alloc(MB, 'x').toString(),
     'Write 1MB data to the same file x 1000'
   )
-})
 
-test.run()
+  t.pass()
+})
 
 async function benchmark(data: string, msg: string): Promise<void> {
   const dir = await mkdtemp(path.join(os.tmpdir(), 'steno-'))
