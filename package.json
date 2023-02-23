@@ -1,6 +1,6 @@
 {
   "name": "@stenodb/writer",
-  "version": "3.4.1",
+  "version": "4.0.0",
   "description": "Specialized fast async file writer",
   "keywords": [
     "fs",
